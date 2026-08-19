@@ -63,7 +63,7 @@ local Library do
     Library = {
         Theme =  { },
 
-        MenuKeybind = tostring(Enum.KeyCode.RightControl), 
+        MenuKeybind = tostring(Enum.KeyCode.Insert), 
 
         Flags = { },
 
@@ -2515,7 +2515,11 @@ local Library do
                 })  Items["CloseIcon"]:AddToTheme({ImageColor3 = "Text"})        
                 
                 Items["CloseButton"]:Connect("MouseButton1Down", function()
-                    Library:Unload()
+                    if Window and Window.SetOpen then
+                        Window:SetOpen(false)
+                    else
+                        Items["MainFrame"].Instance.Visible = false
+                    end
                 end)
 
                 Items["CloseIconAccent"] = Instances:Create("Frame", {
@@ -3132,7 +3136,7 @@ local Library do
                 Settings:Keybind({
                     Name = "Menu Keybind",
                     Flag = "MenuBind",
-                    Default = Enum.KeyCode.RightControl,
+                    Default = Enum.KeyCode.Insert,
                     Callback = function(Value)
                         if Window and Window.SetOpen then
                             Window:SetOpen(Value)
@@ -6610,9 +6614,10 @@ local Library do
                 if StringFind(tostring(Key), "Enum") then 
                     Keybind.Key = tostring(Key)
 
-                    Key = Key.Name == "Backspace" and "None" or Key.Name
+                    local keyName = (typeof(Key) == "EnumItem" and Key.Name) or tostring(Key)
+                    keyName = keyName == "Backspace" and "None" or keyName
 
-                    local KeyString = Keys[Keybind.Key] or StringGSub(Key, "Enum.", "") or "None"
+                    local KeyString = Keys[Keybind.Key] or StringGSub(tostring(keyName), "Enum.", "") or "None"
                     local TextToDisplay = StringGSub(StringGSub(KeyString, "KeyCode.", ""), "UserInputType.", "") or "None"
 
                     Keybind.Value = TextToDisplay
@@ -6641,10 +6646,11 @@ local Library do
                         Keybind:SetMode("Toggle")
                     end
 
-                    local KeyString = Keys[Keybind.Key] or StringGSub(tostring(RealKey), "Enum.", "") or RealKey
-                    local TextToDisplay = KeyString and StringGSub(StringGSub(KeyString, "KeyCode.", ""), "UserInputType.", "") or "None"
+                    local keyName = (typeof(RealKey) == "EnumItem" and RealKey.Name) or tostring(RealKey)
+                    keyName = keyName == "Backspace" and "None" or keyName
 
-                    TextToDisplay = StringGSub(StringGSub(KeyString, "KeyCode.", ""), "UserInputType.", "")
+                    local KeyString = Keys[Keybind.Key] or StringGSub(tostring(keyName), "Enum.", "") or "None"
+                    local TextToDisplay = StringGSub(StringGSub(tostring(KeyString), "KeyCode.", ""), "UserInputType.", "") or "None"
 
                     Keybind.Value = TextToDisplay
                     Items["KeyButton"].Instance.Text = TextToDisplay
