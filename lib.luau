@@ -63,7 +63,7 @@ local Library do
     Library = {
         Theme =  { },
 
-        MenuKeybind = tostring(Enum.KeyCode.Insert), 
+        MenuKeybind = tostring(Enum.KeyCode.RightShift), 
 
         Flags = { },
 
@@ -3136,7 +3136,7 @@ local Library do
                 Settings:Keybind({
                     Name = "Menu Keybind",
                     Flag = "MenuBind",
-                    Default = Enum.KeyCode.Insert,
+                    Default = Enum.KeyCode.RightShift,
                     Callback = function(Value)
                         if Window and Window.SetOpen then
                             Window:SetOpen(Value)
