@@ -76,9 +76,9 @@ local Library do
         FadeSpeed = 0.2,
 
         Folders = {
-            Directory = "lyapossss",
-            Configs = "lyapossss/Configs",
-            Assets = "lyapossss/Assets",
+            Directory = "swinoware",
+            Configs = "swinoware/Configs",
+            Assets = "swinoware/Assets",
         },
 
         -- Ignore below
