@@ -4,7 +4,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/lavochnick/swinoware/refs/heads/main/loader.luau"))()
 ```
 
-### Discord
+### To get key
 [discord.gg/ga99Q7BVCQ](https://discord.gg/ga99Q7BVCQ)
 
 ### Supported Games
