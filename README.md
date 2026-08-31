@@ -11,7 +11,7 @@
 ### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Laptop.webp" alt="Loader" width="25" height="25" /> Loader
 
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/lavochnick/swinoware/refs/heads/main/loader.luau"))()
+loadstring(game:HttpGet("https://api.fentoras.com/api/loader/sc_1788206535126"))()
 ```
 
 ---
